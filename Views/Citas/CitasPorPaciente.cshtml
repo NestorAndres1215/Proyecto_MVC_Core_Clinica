@@ -1,0 +1,84 @@
+﻿@model IEnumerable<AppMVC_Core_BDCLINICA.Models.PA_CITAS_PACIENTE>
+
+@{
+    ViewData["Title"] = "CitasPorPaciente";
+    // obtener la cantidad de filas del modelo
+    var conta = Model.Count();
+    // obtener la suma de la columna pago del modelo
+    var suma = Model.Sum(x=>x.pago);
+}
+
+<h1>CitasPorPaciente</h1>
+
+@using (Html.BeginForm())
+{ 
+    <div>
+        Seleccione Año de Cita: @Html.DropDownList("año",
+                                                  (SelectList)ViewBag.AÑOS,
+                                                  "",
+                                                  new {@class = "form-select"})
+        <br/>
+        Seleccione un Paciente: @Html.DropDownList("codigopac",
+                                                   (SelectList)ViewBag.PACIENTES,
+                                                   "",
+                                                   new { @class="form-select"})
+        <br/>
+        <input type="submit" value="Consultar" class="btn btn-primary" />
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nrocita)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.codmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nommed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nomesp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pago)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nrocita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codmed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nommed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomesp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pago)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<br/>
+<div>
+    Cantidad de Citas: @conta
+    <br/>
+    Suma de los Pagos: @suma 
+</div>

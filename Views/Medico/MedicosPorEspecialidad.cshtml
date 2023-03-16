@@ -1,0 +1,71 @@
+﻿@model IEnumerable<AppMVC_Core_BDCLINICA.Models.Medico>
+
+@{
+    ViewData["Title"] = "MedicosPorEspecialidad";
+}
+
+<h1>MedicosPorEspecialidad</h1>
+
+@using (Html.BeginForm())
+{ 
+    <div>
+        Seleccione Especialidad: @Html.DropDownList("xcodesp",
+                                (SelectList)ViewBag.ESPECIALIDADES,
+                                "",
+                                new { @class = "form-control" })
+        <br/>
+        <input type="submit" value="Consultar" class="btn btn-success" />
+    </div>
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nommed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnioColegio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoddisNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodespNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nommed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnioColegio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoddisNavigation.Nomdis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodespNavigation.Codesp)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Codmed">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Codmed">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Codmed">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

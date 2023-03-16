@@ -1,0 +1,75 @@
+﻿@model IEnumerable<AppMVC_Core_BDCLINICA.Models.Medico>
+
+@{
+    ViewData["Title"] = "ListarMedicos";
+}
+
+<h1>ListarMedicos</h1>
+
+<p>
+    <a asp-action="GrabarMedico">Nuevo Medico - Tag Helper</a>
+    <br/>
+    @Html.ActionLink("Nuevo Medico - Html Helper", "GrabarMedico")
+    <br/>
+    <a asp-action="MedicosPorEspecialidad">Consulta de Medicos por Especialidad</a>
+    <br/>
+    @Html.ActionLink("Citas por Paciente - HTML Helper",   // texto
+                     "CitasPorPaciente",                   // action name
+                     "Citas" ,                             // controller name
+                     null,                                 // parametros
+                     new { @class="btn btn-info" }         // style 
+                     )            
+    <br/>
+    <a asp-action="CitasPorPaciente" 
+       asp-controller="Citas"
+       class="btn btn-success">Citas por Paciente - Tag Helper</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Codmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nommed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnioColegio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoddisNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodespNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codmed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nommed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnioColegio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoddisNavigation.Nomdis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodespNavigation.Nomesp)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { cod = item.Codmed }) |
+                <a asp-action="Edit" asp-route-id="@item.Codmed">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Codmed">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Codmed">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

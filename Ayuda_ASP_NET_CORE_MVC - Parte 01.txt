@@ -1,0 +1,22 @@
+Herramientas / Administrador de paquetes NuGet
+Administrar paquetes NuGet para la Solucion
+
+En Examinar colocar:
+                                           SDK =>  5.0    3.1
+Microsoft.EntityFrameworkCore.SqlServer    -- > 5.0.17 o 3.1.26
+
+Microsoft.EntityFrameworkCore.Tools         --> 5.0.17 o 3.1.26
+
+-- ingenieria de reversa para crear las clases desde la BD de SQL Server
+Herramientas / Administrador de paquetes NuGet
+Consola del Administrador de Paquetes
+
+PM>
+-- Autenticación de SQL Server
+Scaffold-DbContext "Data Source=localhost;Initial Catalog=BDCLINICA2022;User ID=sa;Password=sql;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+-- Autenticación de Windows
+Scaffold-DbContext "server=.;database=BDCLINICA2022;integrated security=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+Scaffold-DbContext "Data Source=localhost;Initial Catalog=BDCLINICA2022;trusted_connection=yes;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
