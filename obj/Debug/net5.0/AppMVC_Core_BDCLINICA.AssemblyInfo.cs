@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppMVC_Core_BDCLINICA")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+893cea7a5555a6e39c723e85ccf19f896069ab85")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppMVC_Core_BDCLINICA")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppMVC_Core_BDCLINICA")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

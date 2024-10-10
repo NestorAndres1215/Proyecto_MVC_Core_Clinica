@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AppMVC_Core_BDCLINICA.props" />
+</Project>
